@@ -1,3 +1,6 @@
 homepage: "https://www.addingwell.com"
 documentation: "https://github.com/addingwell/rakuten-tag/blob/master/README.md"
 versions:
+  - sha: 123d18374f99ffb7637fc6fd76c0f96de5b6140d
+    changeNotes: Initial Release
+
