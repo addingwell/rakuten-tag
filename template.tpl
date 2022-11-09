@@ -187,7 +187,6 @@ const parseUrl = require('parseUrl');
 const encodeUriComponent = require('encodeUriComponent');
 const Math = require('Math');
 const getTimestampMillis = require('getTimestampMillis');
-const log = require('logToConsole');
 
 const eventModel = getAllEventData();
 
@@ -257,8 +256,6 @@ switch (eventModel.event_name) {
         }
       }
     }
-    
-    log(parsedUrl, params);
 
     if (params.ranId) {
       const date = parseDate(getTimestampMillis());
@@ -510,27 +507,6 @@ ___SERVER_PERMISSIONS___
                 "string": "ranadv"
               }
             ]
-          }
-        }
-      ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "logging",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "environments",
-          "value": {
-            "type": 1,
-            "string": "debug"
           }
         }
       ]
