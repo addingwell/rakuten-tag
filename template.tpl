@@ -313,9 +313,9 @@ switch (eventModel.event_name) {
       const price = item[data.priceAttribute] || 0;
       const quantity = item[data.quantityAttribute] || 0;
 
-      skuList.push(sku);
-      quantityList.push(quantity);
-      nameList.push(name);
+      skuList.push(encodeUri(sku));
+      quantityList.push(encodeUri(quantity));
+      nameList.push(encodeUri(name));
 
       let amount = quantity * price;
       if (currency != 'JPY') {
@@ -324,10 +324,10 @@ switch (eventModel.event_name) {
       amountList.push(amount);
     }
 
-    urlParams.push('amtlist=' + encodeUri(amountList.join('|')));
-    urlParams.push('skulist=' + encodeUri(skuList.join('|')));
-    urlParams.push('qlist=' + encodeUri(quantityList.join('|')));
-    urlParams.push('namelist=' + encodeUri(nameList.join('|')));
+    urlParams.push('amtlist=' + amountList.join('|'));
+    urlParams.push('skulist=' + skuList.join('|'));
+    urlParams.push('qlist=' + quantityList.join('|'));
+    urlParams.push('namelist=' + nameList.join('|'));
 
     const urlParamsString = urlParams.filter((v) => v).join('&');
 
