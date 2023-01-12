@@ -1,6 +1,9 @@
 homepage: "https://www.addingwell.com"
 documentation: "https://github.com/addingwell/rakuten-tag/blob/master/README.md"
 versions:
+  - sha: 88ba10eac47a06403f4bea8d8c908d35e43e80e7
+    changeNotes: Allow to send optional Rakuten attributes
+
   - sha: 3a1e77a25ff8fe7cfde80c769cb493d642896065
     changeNotes: URL Encoding per item instead of join
 
