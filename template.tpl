@@ -173,6 +173,108 @@ ___TEMPLATE_PARAMETERS___
         "help": "Parameter name sent in URL by Rakuten"
       }
     ]
+  },
+  {
+    "type": "GROUP",
+    "name": "optionalOrderParameters",
+    "displayName": "Optional Order Parameters",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "LABEL",
+        "name": "label2",
+        "displayName": "View Rakuten\u0027s documentation for the complete list of attributes available."
+      },
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "optionalOrderParametersTable",
+        "displayName": "",
+        "simpleTableColumns": [
+          {
+            "defaultValue": "",
+            "displayName": "Attribute",
+            "name": "attribute",
+            "type": "TEXT",
+            "selectItems": [
+              {
+                "value": "altord",
+                "displayValue": "altord"
+              },
+              {
+                "value": "cc",
+                "displayValue": "cc"
+              },
+              {
+                "value": "commreason",
+                "displayValue": "commreason"
+              },
+              {
+                "value": "consumed",
+                "displayValue": "consumed"
+              },
+              {
+                "value": "coupon",
+                "displayValue": "coupon"
+              },
+              {
+                "value": "custid",
+                "displayValue": "custid"
+              },
+              {
+                "value": "custscore",
+                "displayValue": "custscore"
+              },
+              {
+                "value": "custstatus",
+                "displayValue": "custstatus"
+              },
+              {
+                "value": "did",
+                "displayValue": "did"
+              },
+              {
+                "value": "disamt",
+                "displayValue": "disamt"
+              },
+              {
+                "value": "ordstatus",
+                "displayValue": "ordstatus"
+              },
+              {
+                "value": "segment",
+                "displayValue": "segment"
+              },
+              {
+                "value": "shipcountry",
+                "displayValue": "shipcountry"
+              },
+              {
+                "value": "shipped",
+                "displayValue": "shipped"
+              },
+              {
+                "value": "sitename",
+                "displayValue": "sitename"
+              },
+              {
+                "value": "storecat",
+                "displayValue": "storecat"
+              },
+              {
+                "value": "storeid",
+                "displayValue": "storeid"
+              }
+            ]
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Value",
+            "name": "value",
+            "type": "TEXT"
+          }
+        ]
+      }
+    ]
   }
 ]
 
@@ -328,6 +430,16 @@ switch (eventModel.event_name) {
     urlParams.push('skulist=' + skuList.join('|'));
     urlParams.push('qlist=' + quantityList.join('|'));
     urlParams.push('namelist=' + nameList.join('|'));
+    
+    if (data.optionalOrderParametersTable) {
+      for (let index in data.optionalOrderParametersTable) {
+        const parameter = data.optionalOrderParametersTable[index];
+        if (parameter.value && parameter.attribute) {
+          urlParams.push(parameter.attribute + '=' + encodeUri(parameter.value));
+        }
+      }
+    }
+
 
     const urlParamsString = urlParams.filter((v) => v).join('&');
 
